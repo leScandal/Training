@@ -19,13 +19,10 @@ class AddGroup1(unittest.TestCase):
     def test_AddGroup1(self):
         wd = self.wd
         self.open_home_page(wd)
-
         self.Login(wd, username="admin", password="secret")
-
         self.open_group_page(wd)
         self.Create_group(wd, Group("группа 4", "Знакомые5"))
         self.Return_to_PG(wd)
-
         self.logout(wd)
 
     def logout(self, wd):
