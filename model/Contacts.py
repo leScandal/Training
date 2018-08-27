@@ -21,3 +21,4 @@ class Contacts:
         self.address2 = address2
         self.address3 = address3
         self.notes = notes
+        #E
