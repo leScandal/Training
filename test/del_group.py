@@ -1,12 +1,3 @@
-import pytest
-from model.Group import Group
-from fixture.application import Application
-
-@pytest.fixture
-def app(request):
-    fixture = Application()
-    request.addfinalizer(fixture.stop)
-    return fixture
 
 
 def test_Del1Group(app):

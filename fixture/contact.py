@@ -89,3 +89,12 @@ class ContactHelper:
        wd = self.app.wd
        if not wd.find_element_by_xpath("//div[@id='content']/form/select[5]//option[2]").is_selected():
            wd.find_element_by_xpath("//div[@id='content']/form/select[5]//option[2]").click()
+
+   def del_Cont(self):
+       # open_contact_page
+       wd = self.wd
+       wd.find_element_by_name("selected[]").click()
+       wd.find_element_by_id("4").click()
+       wd.switch_to_alert().accept()
+
+
