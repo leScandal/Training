@@ -12,8 +12,6 @@ def app(request):
 
     
 def test_AddGroup1(app):
-    app.Login(username="admin", password="secret")
-    app.open_group_page()
-    app.Create_group(Group("группа 5", "Знакомые6"))
-    app.Return_to_PG()
-    app.logout()
+    app.session.login(username="admin", password="secret")
+    app.group.Create(Group("группа 5", "Знакомые6"))
+    app.session.logout()
