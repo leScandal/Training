@@ -8,7 +8,7 @@ class GroupHelper:
         wd.find_element_by_link_text("groups").click()
 
     def Create(self, Group):
-        wd = self.wd
+        wd = self.app.wd
         self.open_GP()
         wd.find_element_by_name("new").click()
         wd.find_element_by_name("group_name").click()
@@ -22,7 +22,7 @@ class GroupHelper:
 
 
     def delete_first_group(self):
-        wd = self.wd
+        wd = self.app.wd
         self.open_GP()
         wd.find_element_by_name("selected[]").click()
         wd.find_element_by_name("delete").click()

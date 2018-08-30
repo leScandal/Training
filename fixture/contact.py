@@ -92,7 +92,7 @@ class ContactHelper:
 
    def del_Cont(self):
        # open_contact_page
-       wd = self.wd
+       wd = self.app.wd
        wd.find_element_by_name("selected[]").click()
        wd.find_element_by_id("4").click()
        wd.switch_to_alert().accept()
