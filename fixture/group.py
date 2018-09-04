@@ -17,8 +17,11 @@ class GroupHelper:
         wd.find_element_by_name("group_header").click()
         wd.find_element_by_name("group_header").clear()
         wd.find_element_by_name("group_header").send_keys(Group.header)
+        wd.find_element_by_name("group_footer").click()
+        wd.find_element_by_name("group_footer").clear()
+        wd.find_element_by_name("group_footer").send_keys(Group.footer)
         wd.find_element_by_name("submit").click()
-        self.return_to__GP()
+        self.return_to_GP()
 
 
     def delete_first_group(self):

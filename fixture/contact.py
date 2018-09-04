@@ -1,3 +1,8 @@
+from selenium.webdriver.common.by import By
+from selenium.webdriver.firefox.webdriver import WebDriver
+from selenium.webdriver.common.action_chains import ActionChains
+from selenium.webdriver.common.keys import Keys
+import time
 class ContactHelper:
 
    def __init__(self, app):
@@ -21,7 +26,7 @@ class ContactHelper:
        wd.find_element_by_name("nickname").click()
        wd.find_element_by_name("nickname").clear()
        wd.find_element_by_name("nickname").send_keys(Contacts.nickN)
-       wd.find_element_by_name("photo").click()
+       #wd.find_element_by_name("photo").click()
        wd.find_element_by_name("title").click()
        wd.find_element_by_name("title").clear()
        wd.find_element_by_name("title").send_keys(Contacts.title)
@@ -63,14 +68,14 @@ class ContactHelper:
            wd.find_element_by_xpath("//div[@id='content']/form/select[2]//option[2]").click()
        wd.find_element_by_name("byear").click()
        wd.find_element_by_name("byear").clear()
-       wd.find_element_by_name("byear").send_keys("2018")
+       wd.find_element_by_name("byear").send_keys("2019")
        if not wd.find_element_by_xpath("//div[@id='content']/form/select[3]//option[21]").is_selected():
            wd.find_element_by_xpath("//div[@id='content']/form/select[3]//option[21]").click()
        if not wd.find_element_by_xpath("//div[@id='content']/form/select[4]//option[5]").is_selected():
            wd.find_element_by_xpath("//div[@id='content']/form/select[4]//option[5]").click()
        wd.find_element_by_name("ayear").click()
        wd.find_element_by_name("ayear").clear()
-       wd.find_element_by_name("ayear").send_keys("2020")
+       wd.find_element_by_name("ayear").send_keys("2021")
        # empty group
        self.into_empty_group()
 
@@ -94,7 +99,7 @@ class ContactHelper:
        # open_contact_page
        wd = self.app.wd
        wd.find_element_by_name("selected[]").click()
-       wd.find_element_by_id("4").click()
+       wd.find_element_by_xpath ((By.XPATH, '//button[text="delete"]')).click()
        wd.switch_to_alert().accept()
 
 
