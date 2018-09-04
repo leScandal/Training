@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from model.Contacts import Contacts
+from test.model.Contacts import Contacts
 
 
 def test_Contact3(app):
