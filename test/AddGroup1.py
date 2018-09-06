@@ -4,11 +4,11 @@ from model.Group import Group
 
 def test_AddGroup1(app):
     app.session.login(username="admin", password="secret")
-    app.group.Create(Group("группа 11", "Cослуживцы12", "Коллеги13"))
+    app.group.Create(Group("группа 1", "Cослуживцы1", "Коллеги3"))
     app.session.logout()
 
 
 def test_EmptyGroup(app):
     app.session.login(username="admin", password="secret")
-    app.group.Create(Group("", "", ""))
+    app.group.Create(Group("1", "2", "3"))
     app.session.logout()

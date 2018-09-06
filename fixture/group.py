@@ -28,7 +28,7 @@ class GroupHelper:
         wd = self.app.wd
         self.change_name_value1("group_name", Group.name)
         self.change_name_value1("group_header", Group.header)
-        #self.change_name_value1("group_footer", Group.footer)
+        self.change_name_value1("group_footer", Group.footer)
 
 
     def delete_first_group(self):
@@ -38,7 +38,7 @@ class GroupHelper:
         wd.find_element_by_name("delete").click()
         self.return_to_GP()
 
-    def modify_first(self, new_group_data):
+    def Modify_first(self, new_group_data):
         wd = self.app.wd
         self.open_GP()
         self.select_first_group(wd)
