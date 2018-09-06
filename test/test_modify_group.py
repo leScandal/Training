@@ -1,4 +1,4 @@
-from test.model.Group import Group
+from model.Group import Group
 
 
 def test_modify_name_group(app):
@@ -9,6 +9,7 @@ def test_modify_name_group(app):
 
 def test_modify_name_header(app):
     app.session.login(username="admin", password="secret")
-    app.group.Modify_first(Group(header="New header"))
+    app.group.Modify_first(Group(header = "New header"))
+
     app.session.logout()
 

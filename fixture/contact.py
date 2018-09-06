@@ -99,7 +99,5 @@ class ContactHelper:
        # open_contact_page
        wd = self.app.wd
        wd.find_element_by_name("selected[]").click()
-       wd.find_element_by_xpath((By.XPATH, '//button[text="delete"]')).click()
+       wd.find_element_by_xpath("//div[@id='content']/form[2]/div[2]/input").click()
        wd.switch_to_alert().accept()
-
-

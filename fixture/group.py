@@ -16,7 +16,7 @@ class GroupHelper:
         self.return_to_GP()
 
 
-    def change_name_value(self, field_name, text):
+    def change_name_value1(self, field_name, text):
         wd = self.app.wd
         if text is not None:
             wd.find_element_by_name(field_name).click()
@@ -26,9 +26,9 @@ class GroupHelper:
 
     def fill_group_form(self, Group):
         wd = self.app.wd
-        self.change_name_value("group_name", Group.name)
-        self.change_name_value("group_header", Group.header)
-        self.change_name_value("group_footer", Group.footer)
+        self.change_name_value1("group_name", Group.name)
+        self.change_name_value1("group_header", Group.header)
+        #self.change_name_value1("group_footer", Group.footer)
 
 
     def delete_first_group(self):
