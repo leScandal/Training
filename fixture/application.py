@@ -12,6 +12,16 @@ class Application:
        self.contact = ContactHelper(self)
        self.group = GroupHelper(self)
 
+
+   def is_valid(self):
+       try:
+           self.wd.current_url
+           return True
+       except:
+           return False
+
+
+
    def open_HP(self):
        wd = self.wd
        wd.get("http://localhost/addressbook/")
@@ -19,3 +29,5 @@ class Application:
 
    def stop(self):
        self.wd.quit()
+
+
