@@ -8,4 +8,4 @@ def test_AddGroup1(app):
 
 
 def test_EmptyGroup(app):
-    app.group.Create(Group("23", "12", "83"))
+    app.group.Create(Group("23lj", "12", "83"))
