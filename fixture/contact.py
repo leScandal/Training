@@ -96,8 +96,11 @@ class ContactHelper:
            wd.find_element_by_xpath("//div[@id='content']/form/select[5]//option[2]").click()
 
    def del_Cont(self):
-       # open_contact_page
        wd = self.app.wd
        wd.find_element_by_name("selected[]").click()
        wd.find_element_by_xpath("//div[@id='content']/form[2]/div[2]/input").click()
        wd.switch_to_alert().accept()
+
+   def count(self):
+       wd = self.app.wd
+       return len(wd.find_elements_by_name("selected[]"))
