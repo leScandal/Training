@@ -1,3 +1,4 @@
+from model import Group
 class GroupHelper:
 
     def __init__(self, app):
@@ -5,7 +6,7 @@ class GroupHelper:
 
     def open_GP(self):
         wd=self.app.wd
-        if not ( wd.current_url.endswith("/groups.php") and len(wd.find_elements_by_name("new")>0)):
+        if not (wd.current_url.endswith("/groups.php") and len(wd.find_elements_by_name("new") > 0)):
             wd.find_element_by_link_text("groups").click()
 
     def Create(self, Group):
@@ -64,3 +65,16 @@ class GroupHelper:
         wd = self.app.wd
         self.open_GP()
         return len(wd.find_elements_by_name("selected[]"))
+
+
+    def get_group_list(self):
+        wd = self.app.wd
+        self.open_GP()
+        list1 = list()
+        for element in wd.find_elements_by_css_selector("span.group"):
+            text = element.text
+            id = element.find_element_by_name("selected[]").get_attribute("value")
+            list1.append(Group(name = text, id = id))
+        return list1
+
+
