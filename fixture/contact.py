@@ -62,20 +62,20 @@ class ContactHelper:
        wd.find_element_by_name("homepage").click()
        wd.find_element_by_name("homepage").clear()
        wd.find_element_by_name("homepage").send_keys(Contacts.HP)
-       if not wd.find_element_by_xpath("//div[@id='content']/form/select[1]//option[19]").is_selected():
-           wd.find_element_by_xpath("//div[@id='content']/form/select[1]//option[19]").click()
-       if not wd.find_element_by_xpath("//div[@id='content']/form/select[2]//option[2]").is_selected():
-           wd.find_element_by_xpath("//div[@id='content']/form/select[2]//option[2]").click()
-       wd.find_element_by_name("byear").click()
-       wd.find_element_by_name("byear").clear()
-       wd.find_element_by_name("byear").send_keys("2019")
-       if not wd.find_element_by_xpath("//div[@id='content']/form/select[3]//option[21]").is_selected():
-           wd.find_element_by_xpath("//div[@id='content']/form/select[3]//option[21]").click()
-       if not wd.find_element_by_xpath("//div[@id='content']/form/select[4]//option[5]").is_selected():
-           wd.find_element_by_xpath("//div[@id='content']/form/select[4]//option[5]").click()
-       wd.find_element_by_name("ayear").click()
-       wd.find_element_by_name("ayear").clear()
-       wd.find_element_by_name("ayear").send_keys("2021")
+       # if not wd.find_element_by_xpath("//div[@id='content']/form/select[1]//option[19]").is_selected():
+       #     wd.find_element_by_xpath("//div[@id='content']/form/select[1]//option[19]").click()
+       # if not wd.find_element_by_xpath("//div[@id='content']/form/select[2]//option[2]").is_selected():
+       #     wd.find_element_by_xpath("//div[@id='content']/form/select[2]//option[2]").click()
+       # wd.find_element_by_name("byear").click()
+       # wd.find_element_by_name("byear").clear()
+       # wd.find_element_by_name("byear").send_keys("2019")
+       # if not wd.find_element_by_xpath("//div[@id='content']/form/select[3]//option[21]").is_selected():
+       #     wd.find_element_by_xpath("//div[@id='content']/form/select[3]//option[21]").click()
+       # if not wd.find_element_by_xpath("//div[@id='content']/form/select[4]//option[5]").is_selected():
+       #     wd.find_element_by_xpath("//div[@id='content']/form/select[4]//option[5]").click()
+       # wd.find_element_by_name("ayear").click()
+       # wd.find_element_by_name("ayear").clear()
+       # wd.find_element_by_name("ayear").send_keys("2021")
        # empty group
        self.into_empty_group()
 
