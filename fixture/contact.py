@@ -76,9 +76,9 @@ class ContactHelper:
        wd = self.app.wd
        list2 = list()
        for element in wd.find_elements_by_name("entry"):
-           list2 = wd.find_elements_by_tag_name("td")
+           list2 = element.find_elements_by_tag_name("td")
            id = element.find_element_by_name("selected[]").get_attribute("value")
-           #lists2 = list(map(lambda item: item.text, lists2)) # наименования разделов
+           #list2 = list(map(lambda item: item.text, list2)) # наименования разделов
            list2.append(Contacts(name=list2[1].text, lastN = list2[3].text , id=id))
        return list2
 
