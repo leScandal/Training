@@ -1,9 +1,6 @@
-from selenium.webdriver.common.by import By
-from selenium.webdriver.firefox.webdriver import WebDriver
-from selenium.webdriver.common.action_chains import ActionChains
-from selenium.webdriver.common.keys import Keys
-import time
+from model.Contacts import Contacts
 class ContactHelper:
+
 
    def __init__(self, app):
        self.app = app
