@@ -2,7 +2,8 @@
 class Contacts:
 
 
-    def __init__(self, name, middleN, lastN, nickN, title, company, address, home, mobile, work, fax, email1, email2, email3, HP, address2, address3, notes):
+    def __init__(self, id=None, name=None, middleN=None, lastN=None, nickN=None, title=None, company=None, address=None, home=None, mobile=None, work=None, fax=None, email1=None, email2=None, email3=None, HP=None, address2=None, address3=None, notes=None):
+        self.id = id
         self.name = name
         self.middleN = middleN
         self.lastN = lastN
@@ -21,4 +22,3 @@ class Contacts:
         self.address2 = address2
         self.address3 = address3
         self.notes = notes
-        #E
