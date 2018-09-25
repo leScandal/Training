@@ -11,8 +11,8 @@ def test_AddGroup1(app):
     old_groups.append(added)
     assert sorted(old_groups, key=Group.id_or_max) == sorted(new_groups, key=Group.id_or_max)
 
-# def test_AddGroup2(app):
-#     app.group.Create(Group("12", "2Cж", "2ег"))
+def test_AddGroup2(app):
+    app.group.Create(Group("12", "2Cж", "2ег"))
 
 
 def test_EmptyGroup(app):

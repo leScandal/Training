@@ -57,8 +57,8 @@ class GroupHelper:
     def return_to_GP(self):
         wd = self.app.wd
         wd.find_element_by_link_text("group page").click()
-        if not wd.find_element_by_name("selected[]").is_selected():
-            self.select_first_group(wd)
+        # if not wd.find_element_by_name("selected[]").is_selected():
+        #     self.select_first_group(wd)
 
 
     def count(self):

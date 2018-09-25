@@ -44,23 +44,31 @@ class ContactHelper:
        # wd.find_element_by_name("ayear").clear()
        # wd.find_element_by_name("ayear").send_keys("2021")
        # empty group
-       self.into_empty_group()
+       #self.into_empty_group()
        self.change_name_value("address2", Contacts.address2)
        self.change_name_value("phone2", Contacts.address3)
        self.change_name_value("notes", Contacts.notes)
        wd.find_element_by_xpath("//div[@id='content']/form/input[21]").click()
+       self.return_to_HP()
+       #wd.find_element_by_link_text("home").click()
 
    def into_empty_group(self):
        wd = self.app.wd
        if not wd.find_element_by_xpath("//div[@id='content']/form/select[5]//option[2]").is_selected():
            wd.find_element_by_xpath("//div[@id='content']/form/select[5]//option[2]").click()
 
+
+   def return_to_HP(self):
+       wd = self.app.wd
+       wd.find_element_by_link_text("home page").click()
+
+
    def del_Cont(self):
        wd = self.app.wd
        wd.find_element_by_name("selected[]").click()
        wd.find_element_by_xpath("//div[@id='content']/form[2]/div[2]/input").click()
        wd.switch_to_alert().accept()
-       self.app.open_HP()
+       wd.find_element_by_link_text("home").click()
 
    def count(self):
        wd = self.app.wd
@@ -75,13 +83,13 @@ class ContactHelper:
 
    def get_con_list(self):
        wd = self.app.wd
-       list2 = list()
+       list3 = list()
        for element in wd.find_elements_by_name("entry"):
            list2 = element.find_elements_by_tag_name("td")
            id = element.find_element_by_name("selected[]").get_attribute("value")
            #list2 = list(map(lambda item: item.text, list2)) # наименования разделов
-           list2.append(Contacts(name=list2[1].text, lastN = list2[3].text , id=id))
-       return list2
+           list3.append(Contacts(name=list2[1].text, lastN = list2[3].text , id=id))
+       return list3
 
 
 
