@@ -21,7 +21,7 @@ from model.Contacts import Contacts
 
 def test_Contact4(app):
     old_cont = app.contact.get_con_list()
-    added = Contacts(name = "Nick4", lastN = "Pronick4", address3 = "24")
+    added = Contacts(name = "Nick4", lastN = "Pronick4") # address3 = "24")
     app.contact.add(added)
     new_cont = app.contact.get_con_list()
     assert len(old_cont) + 1 == len(new_cont)

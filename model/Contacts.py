@@ -26,11 +26,11 @@ class Contacts:
 
 
     def __repr__(self):
-        return "%s:%s:%s:%s" % (self.id, self.name, self.lastN, self.address3)
+        return "%s:%s:%s" % (self.id, self.name, self.lastN) #, self.address3)
 
 
     def __eq__(self, other):
-        return (self.id is None or other.id is None or self.id == other.id) and self.name == other.name and self.lastN == other.lastN and (self.address3 == other.address3 or self.address3 is None or other.address3 is None)
+        return (self.id is None or other.id is None or self.id == other.id) and self.name == other.name and self.lastN == other.lastN #and (self.address3 == other.address3 or self.address3 is None or other.address3 is None)
 
 
     def id_or_max(self):
