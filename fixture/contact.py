@@ -88,7 +88,7 @@ class ContactHelper:
            list2 = element.find_elements_by_tag_name("td")
            id = element.find_element_by_name("selected[]").get_attribute("value")
            #list2 = list(map(lambda item: item.text, list2)) # наименования разделов
-           list3.append(Contacts(name=list2[1].text, lastN = list2[3].text , id=id))
+           list3.append(Contacts(lastN = list2[1].text, name=list2[2].text, address = list2[3].text, id=id))
        return list3
 
 

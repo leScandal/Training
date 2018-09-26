@@ -16,6 +16,7 @@ class GroupHelper:
         self.fill_group_form(Group)
         wd.find_element_by_name("submit").click()
         self.return_to_GP()
+        self.group_cashe = None
 
 
     def change_name_value1(self, field_name, text):
@@ -39,6 +40,7 @@ class GroupHelper:
         self.select_first_group(wd)
         wd.find_element_by_name("delete").click()
         self.return_to_GP()
+        self.group_cashe = None
 
     def Modify_first(self, new_group_data):
         wd = self.app.wd
@@ -48,6 +50,7 @@ class GroupHelper:
         self.fill_group_form(new_group_data)
         wd.find_element_by_name("update").click()
         self.return_to_GP()
+        self.group_cashe = None
 
 
     def select_first_group(self, wd):
@@ -66,15 +69,17 @@ class GroupHelper:
         self.open_GP()
         return len(wd.find_elements_by_name("selected[]"))
 
+    group_cashe = None
 
     def get_group_list(self):
-        wd = self.app.wd
-        self.open_GP()
-        list1 = []
-        for element in wd.find_elements_by_css_selector("span.group"):
-            text = element.text
-            id = element.find_element_by_name("selected[]").get_attribute("value")
-            list1.append(Group(name = text, id = id))
-        return list1
+        if self.group_cashe is None:
+            wd = self.app.wd
+            self.open_GP()
+            self.gorup_cache = []
+            for element in wd.find_elements_by_css_selector("span.group"):
+                text = element.text
+                id = element.find_element_by_name("selected[]").get_attribute("value")
+                self.gorup_cache.append(Group(name = text, id = id))
+        return list(self.gorup_cache)
 
 
