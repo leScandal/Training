@@ -51,6 +51,7 @@ class ContactHelper:
        wd.find_element_by_xpath("//div[@id='content']/form/input[21]").click()
        self.return_to_HP()
        #wd.find_element_by_link_text("home").click()
+       self.contact_cashe = None
 
    def into_empty_group(self):
        wd = self.app.wd
@@ -69,6 +70,7 @@ class ContactHelper:
        wd.find_element_by_xpath("//div[@id='content']/form[2]/div[2]/input").click()
        wd.switch_to_alert().accept()
        wd.find_element_by_link_text("home").click()
+       self.contact_cashe = None
 
    def count(self):
        wd = self.app.wd
@@ -81,15 +83,19 @@ class ContactHelper:
            wd.find_element_by_name(field_name).clear()
            wd.find_element_by_name(field_name).send_keys(text)
 
+   contact_cashe = None
+
    def get_con_list(self):
-       wd = self.app.wd
-       list3 = list()
-       for element in wd.find_elements_by_name("entry"):
-           list2 = element.find_elements_by_tag_name("td")
-           id = element.find_element_by_name("selected[]").get_attribute("value")
-           #list2 = list(map(lambda item: item.text, list2)) # наименования разделов
-           list3.append(Contacts(lastN = list2[1].text, name=list2[2].text, address = list2[3].text, id=id))
-       return list3
+       if self.contact_cashe is None:
+            wd = self.app.wd
+            self.contact_cashe = list()
+            for element in wd.find_elements_by_name("entry"):
+                list2 = element.find_elements_by_tag_name("td")
+                id = element.find_element_by_name("selected[]").get_attribute("value")
+                self.contact_cashe.append(Contacts(lastN = list2[1].text, name=list2[2].text, address = list2[3].text, id=id))
+       return list(self.contact_cashe)
+
+
 
 
 
