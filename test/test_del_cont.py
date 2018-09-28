@@ -6,8 +6,8 @@ def test_del_Cont(app):
     old_cont = app.contact.get_con_list()
     print(list(old_cont))
     app.contact.del_Cont()
+    assert len(old_cont) - 1 == app.contact.count()
     new_cont = app.contact.get_con_list()
-    assert len(old_cont) - 1 == len(new_cont)
     old_cont[0:1] = []
     assert old_cont == new_cont
 
