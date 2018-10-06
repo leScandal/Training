@@ -72,6 +72,20 @@ class ContactHelper:
        wd.find_element_by_link_text("home").click()
        self.contact_cashe = None
 
+
+   def del_Cont_by_index(self, index):
+       wd = self.app.wd
+       self.select_contact_by_index(index)
+       wd.find_element_by_xpath("//div[@id='content']/form[2]/div[2]/input").click()
+       wd.switch_to_alert().accept()
+       wd.find_element_by_link_text("home").click()
+       self.contact_cashe = None
+
+
+   def select_contact_by_index(self, index):
+        wd = self.app.wd
+        wd.find_elements_by_name("selected[]")[index].click()
+
    def count(self):
        wd = self.app.wd
        return len(wd.find_elements_by_name("selected[]"))
