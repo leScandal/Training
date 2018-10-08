@@ -3,7 +3,7 @@ from sys import maxsize
 class Contacts:
 
 
-    def __init__(self, name=None, middleN=None, lastN=None, nickN=None, title=None, company=None, address=None, home=None, mobile=None, work=None, fax=None, email1=None, email2=None, email3=None, HP=None, address2=None, address3=None, notes=None, id=None):
+    def __init__(self, name=None, middleN=None, lastN=None, nickN=None, title=None, company=None, address=None, home=None, mobile=None, work=None, fax=None, email1=None, email2=None, email3=None, HP=None, address2=None, phone2=None, notes=None, id=None):
         self.name = name
         self.middleN = middleN
         self.lastN = lastN
@@ -20,17 +20,18 @@ class Contacts:
         self.email3 = email3
         self.HP = HP
         self.address2 = address2
-        self.address3 = address3
+        self.phone2 = phone2
         self.notes = notes
         self.id = id
 
 
     def __repr__(self):
-        return "%s:%s:%s" % (self.name, self.lastN, self.id) #self.address,
+        return "%s:%s:%s%s" % (self.name, self.lastN, self.address, self.id)
 
 
     def __eq__(self, other):
-        return self.name == other.name and self.lastN == other.lastN and (self.id is None or other.id is None or self.id == other.id) and (self.address == other.address or self.address is None or other.address is None)
+        return self.name == other.name and self.lastN == other.lastN and (self.address == other.address or self.address is None or other.address is None) and (self.id is None or other.id is None or self.id == other.id)
+
 
 
     def id_or_max(self):

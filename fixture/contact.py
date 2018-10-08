@@ -46,12 +46,24 @@ class ContactHelper:
        # empty group
        #self.into_empty_group()
        self.change_name_value("address2", Contacts.address2)
-       self.change_name_value("phone2", Contacts.address3)
+       self.change_name_value("phone2", Contacts.phone2)
        self.change_name_value("notes", Contacts.notes)
        wd.find_element_by_xpath("//div[@id='content']/form/input[21]").click()
        self.return_to_HP()
        #wd.find_element_by_link_text("home").click()
        self.contact_cashe = None
+
+
+   def add_form(self, Contacts):
+       # add_contact
+       wd = self.app.wd
+       wd.find_element_by_link_text("add new").click()
+       self.fill_contact_form(Contacts)
+       wd.find_element_by_xpath("//div[@id='content']/form/input[21]").click()
+       self.return_to_HP()
+       #wd.find_element_by_link_text("home").click()
+       self.contact_cashe = None
+
 
    def into_empty_group(self):
        wd = self.app.wd
@@ -61,8 +73,8 @@ class ContactHelper:
 
    def return_to_HP(self):
        wd = self.app.wd
-       wd.find_element_by_link_text("home page").click()
-
+       wd.find_element_by_link_text("home").click()
+       #wd.find_element_by_link_text("home page").click()
 
    def del_Cont(self):
        wd = self.app.wd
@@ -99,7 +111,7 @@ class ContactHelper:
 
    contact_cashe = None
 
-   def get_con_list(self):
+   def get_cont_list(self):
        if self.contact_cashe is None:
             wd = self.app.wd
             self.contact_cashe = list()
@@ -108,6 +120,39 @@ class ContactHelper:
                 id = element.find_element_by_name("selected[]").get_attribute("value")
                 self.contact_cashe.append(Contacts(lastN = list2[1].text, name=list2[2].text, address = list2[3].text, id=id))
        return list(self.contact_cashe)
+
+
+   def edit_contact_by_index(self, index, new_data):
+        wd = self.app.wd
+        self.return_to_HP()
+        wd.find_element_by_xpath("//table[@id='maintable']/tbody/tr[" +str(index+2) + "]/td[8]/a/img").click()
+        self.fill_contact_form(new_data)
+        wd.find_element_by_name("update").click()
+        self.return_to_HP()
+        self.contact_cache = None
+
+
+   def fill_contact_form(self, Contacts):
+       wd = self.app.wd
+       self.change_name_value("firstname", Contacts.name)
+       self.change_name_value("middlename", Contacts.middleN)
+       self.change_name_value("lastname", Contacts.lastN)
+       self.change_name_value("nickN", Contacts.nickN)
+       self.change_name_value("title", Contacts.title)
+       self.change_name_value("company", Contacts.company)
+       self.change_name_value("address", Contacts.address)
+       self.change_name_value("home", Contacts.home)
+       self.change_name_value("mobile", Contacts.mobile)
+       self.change_name_value("work", Contacts.work)
+       self.change_name_value("fax", Contacts.fax)
+       self.change_name_value("email", Contacts.email1)
+       self.change_name_value("email2", Contacts.email2)
+       self.change_name_value("email3", Contacts.email3)
+       self.change_name_value("homepage", Contacts.HP)
+       self.change_name_value("address2", Contacts.address2)
+       self.change_name_value("phone2", Contacts.phone2)
+       self.change_name_value("notes", Contacts.notes)
+
 
 
 
