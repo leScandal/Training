@@ -1,4 +1,4 @@
-from model.Group import Group
+from model.group import Group
 class GroupHelper:
 
     def __init__(self, app):
@@ -16,7 +16,7 @@ class GroupHelper:
         self.fill_group_form(Group)
         wd.find_element_by_name("submit").click()
         self.return_to_GP()
-        self.group_cashe = None
+        self.group_cache = None
 
 
     def change_name_value1(self, field_name, text):
@@ -40,7 +40,7 @@ class GroupHelper:
         self.select_group_by_index(index)
         wd.find_element_by_name("delete").click()
         self.return_to_GP()
-        self.group_cashe = None
+        self.group_cache = None
 
 
     def delete_first_group(self):
@@ -55,12 +55,11 @@ class GroupHelper:
         self.fill_group_form(new_group_data)
         wd.find_element_by_name("update").click()
         self.return_to_GP()
-        self.group_cashe = None
+        self.group_cache = None
 
 
     def Modify_first(self, new_group_data):
         self.Modify_group_by_index(0, new_group_data)
-
 
 
     def select_first_group(self):
@@ -83,10 +82,10 @@ class GroupHelper:
         self.open_GP()
         return len(wd.find_elements_by_name("selected[]"))
 
-    group_cashe = None
+    group_cache = None
 
     def get_group_list(self):
-        if self.group_cashe is None:
+        if self.group_cache is None:
             wd = self.app.wd
             self.open_GP()
             self.group_cache = []

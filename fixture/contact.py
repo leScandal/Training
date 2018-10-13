@@ -1,4 +1,4 @@
-from model.Contacts import Contacts
+from model.contacts import Contacts
 class ContactHelper:
 
 
@@ -51,7 +51,7 @@ class ContactHelper:
        wd.find_element_by_xpath("//div[@id='content']/form/input[21]").click()
        self.return_to_HP()
        #wd.find_element_by_link_text("home").click()
-       self.contact_cashe = None
+       self.contact_cache = None
 
 
    def add_form(self, Contacts):
@@ -62,7 +62,7 @@ class ContactHelper:
        wd.find_element_by_xpath("//div[@id='content']/form/input[21]").click()
        self.return_to_HP()
        #wd.find_element_by_link_text("home").click()
-       self.contact_cashe = None
+       self.contact_cache = None
 
 
    def into_empty_group(self):
@@ -82,7 +82,7 @@ class ContactHelper:
        wd.find_element_by_xpath("//div[@id='content']/form[2]/div[2]/input").click()
        wd.switch_to_alert().accept()
        wd.find_element_by_link_text("home").click()
-       self.contact_cashe = None
+       self.contact_cache = None
 
 
    def del_Cont_by_index(self, index):
@@ -91,7 +91,7 @@ class ContactHelper:
        wd.find_element_by_xpath("//div[@id='content']/form[2]/div[2]/input").click()
        wd.switch_to_alert().accept()
        wd.find_element_by_link_text("home").click()
-       self.contact_cashe = None
+       self.contact_cache = None
 
 
    def select_contact_by_index(self, index):
@@ -109,27 +109,64 @@ class ContactHelper:
            wd.find_element_by_name(field_name).clear()
            wd.find_element_by_name(field_name).send_keys(text)
 
-   contact_cashe = None
+   contact_cache = None
 
    def get_cont_list(self):
-       if self.contact_cashe is None:
+       if self.contact_cache is None:
             wd = self.app.wd
-            self.contact_cashe = list()
+            self.app.open_HP
+            self.contact_cache = list()
             for element in wd.find_elements_by_name("entry"):
                 list2 = element.find_elements_by_tag_name("td")
                 id = element.find_element_by_name("selected[]").get_attribute("value")
-                self.contact_cashe.append(Contacts(lastN = list2[1].text, name=list2[2].text, address = list2[3].text, id=id))
-       return list(self.contact_cashe)
+                all_phones = list2[5].text.splitlines()
+                self.contact_cache.append(Contacts(lastN = list2[1].text, name=list2[2].text, address = list2[3].text, id=id, home=all_phones[0], mobile=all_phones[1], work=all_phones[2])) #, fax = all_phones[3]))
+       return list(self.contact_cache)
 
 
+   def open_cont_to_edit_by_index(self, index):
+        wd = self.app.wd
+        self.app.open_HP
+        list2 = wd.find_elements_by_name("entry")[index]
+        pencil = list2.find_elements_by_tag_name("td")[7]
+        pencil.find_element_by_tag_name("a").click()
+
+
+   def open_cont_view_by_index(self, index):
+        wd = self.app.wd
+        self.app.open_HP
+        list2 = wd.find_elements_by_name("entry")[index]
+        details = list2.find_elements_by_tag_name("td")[6]
+        details.find_element_by_tag_name("a").click()
+
+
+   def get_cont_info_from_edit_page(self, index):
+       wd = self.app.wd
+       self.open_cont_to_edit_by_index(index)
+       firstname = wd.find_element_by_name("firstname").get_attribute("value")
+       lastname = wd.find_element_by_name("lastname").get_attribute("value")
+       id = wd.find_element_by_name("id").get_attribute("value")
+       home = wd.find_element_by_name("home").get_attribute("value")
+       mobile = wd.find_element_by_name("mobile").get_attribute("value")
+       work = wd.find_element_by_name("work").get_attribute("value")
+       fax = wd.find_element_by_name("fax").get_attribute("value")
+       secondary = wd.find_element_by_name("phone2").get_attribute("value")
+       return Contacts(lastN = lastname, name=firstname, id=id, home = home, mobile = mobile, work = work, fax= fax, phone2=secondary)
+
+
+
+#my code - work test_edit_cont
    def edit_contact_by_index(self, index, new_data):
         wd = self.app.wd
-        self.return_to_HP()
+        self.app.open_HP()
         wd.find_element_by_xpath("//table[@id='maintable']/tbody/tr[" +str(index+2) + "]/td[8]/a/img").click()
         self.fill_contact_form(new_data)
         wd.find_element_by_name("update").click()
-        self.return_to_HP()
+        self.app.open_HP()
         self.contact_cache = None
+#end my code
+
+
 
 
    def fill_contact_form(self, Contacts):
@@ -152,9 +189,4 @@ class ContactHelper:
        self.change_name_value("address2", Contacts.address2)
        self.change_name_value("phone2", Contacts.phone2)
        self.change_name_value("notes", Contacts.notes)
-
-
-
-
-
-
+       self.contact_cache = None

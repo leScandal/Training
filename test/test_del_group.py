@@ -1,4 +1,4 @@
-from model.Group import Group
+from model.group import Group
 from random import randrange
 
 def test_Del_some_Group(app):
