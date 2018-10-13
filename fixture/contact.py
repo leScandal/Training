@@ -120,7 +120,7 @@ class ContactHelper:
                 list2 = element.find_elements_by_tag_name("td")
                 id = element.find_element_by_name("selected[]").get_attribute("value")
                 all_phones = list2[5].text.splitlines()
-                self.contact_cache.append(Contacts(lastN = list2[1].text, name=list2[2].text, address = list2[3].text, id=id, home=all_phones[0], mobile=all_phones[1], work=all_phones[2])) #, fax = all_phones[3]))
+                self.contact_cache.append(Contacts(lastN = list2[1].text, name=list2[2].text, address = list2[3].text, id=id, home=all_phones[0], mobile=all_phones[1], work=all_phones[2], phone2 = all_phones[3]))
        return list(self.contact_cache)
 
 
@@ -149,9 +149,9 @@ class ContactHelper:
        home = wd.find_element_by_name("home").get_attribute("value")
        mobile = wd.find_element_by_name("mobile").get_attribute("value")
        work = wd.find_element_by_name("work").get_attribute("value")
-       fax = wd.find_element_by_name("fax").get_attribute("value")
+       #fax = wd.find_element_by_name("fax").get_attribute("value")
        secondary = wd.find_element_by_name("phone2").get_attribute("value")
-       return Contacts(lastN = lastname, name=firstname, id=id, home = home, mobile = mobile, work = work, fax= fax, phone2=secondary)
+       return Contacts(lastN = lastname, name=firstname, id=id, home = home, mobile = mobile, work = work, phone2=secondary)
 
 
 
