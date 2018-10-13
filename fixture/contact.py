@@ -1,4 +1,5 @@
 from model.contacts import Contacts
+import re
 class ContactHelper:
 
 
@@ -120,7 +121,14 @@ class ContactHelper:
                 list2 = element.find_elements_by_tag_name("td")
                 id = element.find_element_by_name("selected[]").get_attribute("value")
                 all_phones = list2[5].text.splitlines()
-                self.contact_cache.append(Contacts(lastN = list2[1].text, name=list2[2].text, address = list2[3].text, id=id, home=all_phones[0], mobile=all_phones[1], work=all_phones[2], phone2 = all_phones[3]))
+                self.contact_cache.append(Contacts(lastN = list2[1].text,
+                                                   name=list2[2].text,
+                                                   address = list2[3].text,
+                                                   id=id,
+                                                   home=all_phones[0],
+                                                   mobile=all_phones[1],
+                                                   work=all_phones[2],
+                                                   phone2 = all_phones[3]))
        return list(self.contact_cache)
 
 
@@ -138,6 +146,17 @@ class ContactHelper:
         list2 = wd.find_elements_by_name("entry")[index]
         details = list2.find_elements_by_tag_name("td")[6]
         details.find_element_by_tag_name("a").click()
+
+
+   def get_cont_from_view_page(self, index):
+        wd = self.app.wd
+        self.open_cont_view_by_index(index)
+        list1 = wd.find_elements_by_id("content").text
+        home = re.search( "H: (.*)", list1).group(1)
+        work = re.search("W: (.*)", list1).group(1)
+        mobile = re.search("M: (.*)", list1).group(1)
+        secondary = re.search("P: (.*)", list1).group(1)
+        return Contacts(home = home, mobile = mobile, work = work, phone2=secondary)
 
 
    def get_cont_info_from_edit_page(self, index):
