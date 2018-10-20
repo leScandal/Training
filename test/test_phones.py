@@ -12,6 +12,7 @@ import re
 #    # assert first_cont_from_HP.fax == clear(first_cont_from_edit_page.fax)
 #     assert first_cont_from_HP.phone2 == clear(first_cont_from_edit_page.phone2)
 
+#2й тест падает при наличии пустых значений
 
 def test_phones_on_HP(app):
     first_cont_from_HP = app.contact.get_cont_list()[0]
@@ -19,7 +20,7 @@ def test_phones_on_HP(app):
     print(first_cont_from_edit_page)
     print ('fix')
     print(first_cont_from_HP)
-    assert first_cont_from_HP. all_phones_from_HP == merge_phones_like_HP(first_cont_from_edit_page)
+    assert first_cont_from_HP.all_phones_from_HP == merge_phones_like_HP(first_cont_from_edit_page)
 
 
 def clear(string):
