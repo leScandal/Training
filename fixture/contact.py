@@ -115,7 +115,7 @@ class ContactHelper:
    def get_cont_list(self):
        if self.contact_cache is None:
             wd = self.app.wd
-            self.app.open_HP
+            self.app.open_HP()
             self.contact_cache = list()
             for element in wd.find_elements_by_name("entry"):
                 list2 = element.find_elements_by_tag_name("td")
@@ -134,7 +134,7 @@ class ContactHelper:
 
    def open_cont_to_edit_by_index(self, index):
         wd = self.app.wd
-        self.app.open_HP
+        self.app.open_HP()
         list2 = wd.find_elements_by_name("entry")[index]
         pencil = list2.find_elements_by_tag_name("td")[7]
         pencil.find_element_by_tag_name("a").click()
@@ -142,7 +142,7 @@ class ContactHelper:
 
    def open_cont_view_by_index(self, index):
         wd = self.app.wd
-        self.app.open_HP
+        self.app.open_HP()
         list2 = wd.find_elements_by_name("entry")[index]
         details = list2.find_elements_by_tag_name("td")[6]
         details.find_element_by_tag_name("a").click()
@@ -151,7 +151,7 @@ class ContactHelper:
    def get_cont_from_view_page(self, index):
         wd = self.app.wd
         self.open_cont_view_by_index(index)
-        list1 = wd.find_elements_by_id("content").text
+        list1 = wd.find_element_by_id("content").text
         home = re.search( "H: (.*)", list1).group(1)
         work = re.search("W: (.*)", list1).group(1)
         mobile = re.search("M: (.*)", list1).group(1)
@@ -184,7 +184,6 @@ class ContactHelper:
         self.app.open_HP()
         self.contact_cache = None
 #end my code
-
 
 
 
