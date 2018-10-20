@@ -120,15 +120,16 @@ class ContactHelper:
             for element in wd.find_elements_by_name("entry"):
                 list2 = element.find_elements_by_tag_name("td")
                 id = element.find_element_by_name("selected[]").get_attribute("value")
-                all_phones = list2[5].text.splitlines()
+                all_phones = list2[5].text
                 self.contact_cache.append(Contacts(lastN = list2[1].text,
                                                    name=list2[2].text,
                                                    address = list2[3].text,
                                                    id=id,
-                                                   home=all_phones[0],
-                                                   mobile=all_phones[1],
-                                                   work=all_phones[2],
-                                                   phone2 = all_phones[3]))
+                                                   all_phones_from_HP = all_phones))
+                                                   # home=all_phones[0],
+                                                   # mobile=all_phones[1],
+                                                   # work=all_phones[2],
+                                                   # phone2 = all_phones[3]))
        return list(self.contact_cache)
 
 
