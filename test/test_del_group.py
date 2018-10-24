@@ -1,5 +1,6 @@
 from model.group import Group
 from random import randrange
+import pytest
 
 def test_Del_some_Group(app):
     if app.group.count() == 0:
