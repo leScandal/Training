@@ -14,7 +14,7 @@ def app(request):
     if target is None:
         with open(request.config.getoption("--target")) as config_file:
             target = json.load(config_file)
-    if fixture is None or not fixture.app.is_valid():
+    if fixture is None or not fixture.is_valid():
         fixture = Application(browser=browser, base_url = target['baseUrl'])
     fixture.session.ensure_login(username = target['username'], password = target['password'])
     return fixture
@@ -23,7 +23,7 @@ def app(request):
 def ostan(request):
     def fin():
         fixture.session.ensure_logout()
-        fixture.app.stop()
+        fixture.stop()
     request.addfinalizer(fin)
     return fixture
 
