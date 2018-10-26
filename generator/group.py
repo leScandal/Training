@@ -40,7 +40,7 @@ testdata = [Group(name="", header="", footer="")]  + [
 #     for footer in ["", random_string("footer", 20)]
 # ]
 
-file = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", f)
+file = os.path.join(os.path.dirname(os.path.abspath(__file__)), ".." , f)
 
 with open(file, "w") as out_file:
     jsonpickle.set_encoder_options("json",  indent=2)
