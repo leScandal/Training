@@ -1,7 +1,6 @@
 from model.group import Group
-import pytest
 #from data.add_const_gr import constant as testdata
-from generator.group import testdata
+#from generator.group import testdata (Task18)
 
 
 #@pytest.mark.parametrize("data", testdata, ids=[repr(x) for x in testdata])
