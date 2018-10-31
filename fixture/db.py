@@ -1,3 +1,4 @@
+import pymysql
 import mysql.connector
 from model.group import Group
 from model.contacts import Contacts
@@ -10,8 +11,8 @@ class DbFixture:
         self.database = database
         self.user = user
         self.password = password
-        self.connection = mysql.connector.connect(host=host, database = database, user = user, password = password)
-
+        #self.connection = mysql.connector.connect(host="127.0.0.1", database = "addressbook", user = "root", password = "")
+        self.connection = pymysql.connect(host="127.0.0.1", database="addressbook", user="root", password="")
 
     def get_group_list(self):
         list = []
