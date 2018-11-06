@@ -10,8 +10,8 @@ def test_del_Cont(app, db):
     #index = randrange (len(old_cont))
     print(list(old_cont))
     app.contact.del_Cont_by_id(contact.id)
-    #assert len(old_cont) - 1 == app.contact.count()
     new_cont = db.get_cont_list()
+    assert len(old_cont) - 1 == len(new_cont)
     old_cont.remove(contact)
     assert old_cont == new_cont
 
