@@ -220,7 +220,7 @@ class ContactHelper:
 
    def select_cont_by_id(self, id):
        wd = self.app.wd
-       wd.find_element_by_xpath("//*[@id='%s']" % id).click()
+       wd.find_element_by_css_selector("input[value = '%s']" % id).click()
 
 
    def fill_contact_form(self, Contacts):
