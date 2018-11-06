@@ -56,7 +56,7 @@ class GroupHelper:
         self.delete_group_by_index(0)
 
 
-    def Modify_group_by_index(self, index, new_group_data):
+    def Modify_group_by_idex(self, index, new_group_data):
         wd = self.app.wd
         self.open_GP()
         self.select_group_by_index(index)
@@ -69,6 +69,17 @@ class GroupHelper:
 
     def Modify_first(self, new_group_data):
         self.Modify_group_by_index(0, new_group_data)
+
+
+    def Modify_group_by_id(self, id, new_group_data):
+        wd = self.app.wd
+        self.open_GP()
+        self.select_group_by_id(id)
+        wd.find_element_by_name("edit").click()
+        self.fill_group_form(new_group_data)
+        wd.find_element_by_name("update").click()
+        self.return_to_GP()
+        self.group_cache = None
 
 
     def select_first_group(self):

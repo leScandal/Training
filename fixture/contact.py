@@ -208,6 +208,15 @@ class ContactHelper:
 #end my code
 
 
+   def edit_contact_by_id(self, id, new_data):
+        wd = self.app.wd
+        self.app.open_HP()
+        self.select_contact_by_id(id)
+        self.fill_contact_form(new_data)
+        wd.find_element_by_name("update").click()
+        self.app.open_HP()
+        self.contact_cache = None
+
 
    def fill_contact_form(self, Contacts):
        wd = self.app.wd
