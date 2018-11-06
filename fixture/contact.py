@@ -211,11 +211,16 @@ class ContactHelper:
    def edit_contact_by_id(self, id, new_data):
         wd = self.app.wd
         self.app.open_HP()
-        self.select_contact_by_id(id)
+        self.select_cont_by_id(id)
         self.fill_contact_form(new_data)
         wd.find_element_by_name("update").click()
         self.app.open_HP()
         self.contact_cache = None
+
+
+   def select_cont_by_id(self, id):
+       wd = self.app.wd
+       wd.find_element_by_xpath("//*[@id='%s']" % id).click()
 
 
    def fill_contact_form(self, Contacts):
