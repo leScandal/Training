@@ -212,6 +212,7 @@ class ContactHelper:
         wd = self.app.wd
         self.app.open_HP()
         self.select_cont_by_id(id)
+        self.find_element_by_tag_name("a").click()
         self.fill_contact_form(new_data)
         wd.find_element_by_name("update").click()
         self.app.open_HP()
@@ -221,28 +222,32 @@ class ContactHelper:
    def select_cont_by_id(self, id):
        wd = self.app.wd
        #wd.find_element_by_id(id).click()
-       wd.find_element_by_css_selector("input[id='%s']" % id).click()
+       wd.find_element_by_css_selector("input[value='%s']" % id).click()
        #wd.find_element_by_xpath("//*[@id='%s']" % id).click()
 
+       # find_elements_by_xpath(".//*[@title='Edit']"))
+       # row = wd.find_elements_by_name("entry")[index]
+       # cell = row.find_elements_by_tag_name("td")[7]
+       # cell.find_element_by_tag_name("a").click()
 
-   def fill_contact_form(self, Contacts):
-       wd = self.app.wd
-       self.change_name_value("firstname", Contacts.name)
-       self.change_name_value("middlename", Contacts.middleN)
-       self.change_name_value("lastname", Contacts.lastN)
-       self.change_name_value("nickN", Contacts.nickN)
-       self.change_name_value("title", Contacts.title)
-       self.change_name_value("company", Contacts.company)
-       self.change_name_value("address", Contacts.address)
-       self.change_name_value("home", Contacts.home)
-       self.change_name_value("mobile", Contacts.mobile)
-       self.change_name_value("work", Contacts.work)
-       self.change_name_value("fax", Contacts.fax)
-       self.change_name_value("email", Contacts.email1)
-       self.change_name_value("email2", Contacts.email2)
-       self.change_name_value("email3", Contacts.email3)
-       self.change_name_value("homepage", Contacts.HP)
-       self.change_name_value("address2", Contacts.address2)
-       self.change_name_value("phone2", Contacts.phone2)
-       self.change_name_value("notes", Contacts.notes)
-       self.contact_cache = None
+       def fill_contact_form(self, Contacts):
+           wd = self.app.wd
+           self.change_name_value("firstname", Contacts.name)
+           self.change_name_value("middlename", Contacts.middleN)
+           self.change_name_value("lastname", Contacts.lastN)
+           self.change_name_value("nickN", Contacts.nickN)
+           self.change_name_value("title", Contacts.title)
+           self.change_name_value("company", Contacts.company)
+           self.change_name_value("address", Contacts.address)
+           self.change_name_value("home", Contacts.home)
+           self.change_name_value("mobile", Contacts.mobile)
+           self.change_name_value("work", Contacts.work)
+           self.change_name_value("fax", Contacts.fax)
+           self.change_name_value("email", Contacts.email1)
+           self.change_name_value("email2", Contacts.email2)
+           self.change_name_value("email3", Contacts.email3)
+           self.change_name_value("homepage", Contacts.HP)
+           self.change_name_value("address2", Contacts.address2)
+           self.change_name_value("phone2", Contacts.phone2)
+           self.change_name_value("notes", Contacts.notes)
+           self.contact_cache = None
