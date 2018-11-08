@@ -10,4 +10,4 @@ try:
         print(item)
     print(len(l))
 finally:
-    pass #db.stop()
+    pass #db.stop() ОСТАНОВИЛАСЬ 13м18сек 7_7!!!!
