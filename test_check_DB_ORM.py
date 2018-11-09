@@ -9,5 +9,11 @@ try:
     for item in l:
         print(item)
     print(len(l))
+
+
+    l1 = db.get_cont_list()
+    for item in l1:
+        print(item)
+    print(len(l1))
 finally:
-    pass #db.stop() ОСТАНОВИЛАСЬ 13м18сек 7_7!!!!
+    pass #db.stop()
