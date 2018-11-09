@@ -9,7 +9,7 @@ def test_edit_cont_name(app, db, check_ui):
     contact_edit = random.choice(old_cont) #случайный выбор контакта
     changed = Contacts(name='Task20', lastN='N_Task20', address='Ad_Task20') #изменяемые данные
     changed.id = contact_edit.id #его id
-    app.contact.edit_contact_by_id(id, changed)
+    app.contact.edit_contact_by_id(changed.id, changed)
     new_cont = db.get_cont_list()
     assert len(old_cont) == len (new_cont)
     old_cont.remove(contact_edit)
