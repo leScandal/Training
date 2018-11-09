@@ -6,7 +6,7 @@ class ORMFixture:
     db = Database()
 
     class ORMGroup(db.Entity):
-        _table_ = "gorup_list"
+        _table_ = "group_list"
         id = PrimaryKey(int, column = 'group_id')
         name = Optional (str, column = 'group_name')
         header = Optional(str, column='group_header')
@@ -24,7 +24,7 @@ class ORMFixture:
 
     def __init__(self, host, database, user, password):
         self.db.bind('mysql', host=host, database=database, user=user, password=password)
-        self.db.generate_mappping()
+        self.db.generate_mapping()
 
     @db_session
     def get_group_list(self):
