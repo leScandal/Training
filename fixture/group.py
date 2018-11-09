@@ -27,11 +27,11 @@ class GroupHelper:
             wd.find_element_by_name(field_name).send_keys(text)
 
 
-    def fill_group_form(self, Group):
+    def fill_group_form(self, group):
         wd = self.app.wd
-        self.change_name_value1("group_name", Group.name)
-        self.change_name_value1("group_header", Group.header)
-        self.change_name_value1("group_footer", Group.footer)
+        self.change_name_value1("group_name", group.name)
+        self.change_name_value1("group_header", group.header)
+        self.change_name_value1("group_footer", group.footer)
 
 
     def delete_group_by_index(self, index):

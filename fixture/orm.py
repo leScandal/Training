@@ -21,7 +21,7 @@ class ORMFixture:
         id = PrimaryKey(int, column = 'id')
         firstname = Optional (str, column = 'firstname')
         lastname = Optional(str, column='lastname')
-        deprecated = Optional(datetime, column='deprecated')
+        deprecated = Optional(str, column='deprecated')
 
 
     def __init__(self, host, database, user, password):
@@ -36,7 +36,7 @@ class ORMFixture:
 
     def convert_contacts_to_model(self, contacts):
         def convert(contact):
-            return Contacts(id = str (contact.id), name = contact.firstname, lastN = contact.lastname) #, footer = contact.footer)
+           return Contacts(id = str (contact.id), name = contact.firstname, lastN = contact.lastname) #, footer = contact.footer)
         return list(map(convert, contacts))
 
     # cursor.execute(
@@ -50,3 +50,5 @@ class ORMFixture:
     @db_session
     def get_cont_list(self):
         return self.convert_contacts_to_model(select(c for c in ORMFixture.ORMContacts if c.deprecated is None))
+        #return list(select(c for c in ORMFixture.ORMContacts if c.deprecated is None)) не прошло
+

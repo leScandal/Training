@@ -6,30 +6,30 @@ class ContactHelper:
    def __init__(self, app):
        self.app = app
 
-   def add(self, Contacts):
+   def add(self, contacts):
        # add_contact
        wd = self.app.wd
        wd.find_element_by_link_text("add new").click()
-       self.change_name_value("firstname", Contacts.name)
+       self.change_name_value("firstname", contacts.name)
        wd.find_element_by_name("theform").click()
-       self.change_name_value("middlename", Contacts.middleN)
+       self.change_name_value("middlename", contacts.middleN)
        wd.find_element_by_name("theform").click()
-       self.change_name_value("lastname", Contacts.lastN)
-       self.change_name_value("nickname", Contacts.nickN)
+       self.change_name_value("lastname", contacts.lastN)
+       self.change_name_value("nickname", contacts.nickN)
        #wd.find_element_by_name("photo").click()
-       self.change_name_value("title", Contacts.title)
-       self.change_name_value("company", Contacts.company)
+       self.change_name_value("title", contacts.title)
+       self.change_name_value("company", contacts.company)
        wd.find_element_by_name("theform").click()
-       self.change_name_value("address", Contacts.address)
-       self.change_name_value("home", Contacts.home)
-       self.change_name_value("mobile", Contacts.mobile)
-       self.change_name_value("work", Contacts.work)
-       self.change_name_value("fax", Contacts.fax)
+       self.change_name_value("address", contacts.address)
+       self.change_name_value("home", contacts.home)
+       self.change_name_value("mobile", contacts.mobile)
+       self.change_name_value("work", contacts.work)
+       self.change_name_value("fax", contacts.fax)
        wd.find_element_by_name("theform").click()
-       self.change_name_value("email", Contacts.email1)
-       self.change_name_value("email2", Contacts.email2)
-       self.change_name_value("email3", Contacts.email3)
-       self.change_name_value("homepage", Contacts.HP)
+       self.change_name_value("email", contacts.email1)
+       self.change_name_value("email2", contacts.email2)
+       self.change_name_value("email3", contacts.email3)
+       self.change_name_value("homepage", contacts.HP)
        # if not wd.find_element_by_xpath("//div[@id='content']/form/select[1]//option[19]").is_selected():
        #     wd.find_element_by_xpath("//div[@id='content']/form/select[1]//option[19]").click()
        # if not wd.find_element_by_xpath("//div[@id='content']/form/select[2]//option[2]").is_selected():
@@ -46,20 +46,20 @@ class ContactHelper:
        # wd.find_element_by_name("ayear").send_keys("2021")
        # empty group
        #self.into_empty_group()
-       self.change_name_value("address2", Contacts.address2)
-       self.change_name_value("phone2", Contacts.phone2)
-       self.change_name_value("notes", Contacts.notes)
+       self.change_name_value("address2", contacts.address2)
+       self.change_name_value("phone2", contacts.phone2)
+       self.change_name_value("notes", contacts.notes)
        wd.find_element_by_xpath("//div[@id='content']/form/input[21]").click()
        self.return_to_HP()
        #wd.find_element_by_link_text("home").click()
        self.contact_cache = None
 
 
-   def add_form(self, Contacts):
+   def add_form(self, contacts):
        # add_contact
        wd = self.app.wd
        wd.find_element_by_link_text("add new").click()
-       self.fill_contact_form(Contacts)
+       self.fill_contact_form(contacts)
        wd.find_element_by_xpath("//div[@id='content']/form/input[21]").click()
        self.return_to_HP()
        #wd.find_element_by_link_text("home").click()
@@ -196,7 +196,6 @@ class ContactHelper:
                        mobile = mobile, work = work, fax = fax, phone2=secondary, email1 = email1 , email2 = email2, email3 = email3)
 
 
-#my code - work test_edit_cont
    def edit_contact_by_index(self, index, new_data):
         wd = self.app.wd
         self.app.open_HP()
@@ -205,7 +204,6 @@ class ContactHelper:
         wd.find_element_by_name("update").click()
         self.app.open_HP()
         self.contact_cache = None
-#end my code
 
 
    def edit_contact_by_id(self, id, new_data):
@@ -230,24 +228,25 @@ class ContactHelper:
        # cell = row.find_elements_by_tag_name("td")[7]
        # cell.find_element_by_tag_name("a").click()
 
-       def fill_contact_form(self, Contacts):
+
+       def fill_contact_form(self, contacts):
            wd = self.app.wd
-           self.change_name_value("firstname", Contacts.name)
-           self.change_name_value("middlename", Contacts.middleN)
-           self.change_name_value("lastname", Contacts.lastN)
-           self.change_name_value("nickN", Contacts.nickN)
-           self.change_name_value("title", Contacts.title)
-           self.change_name_value("company", Contacts.company)
-           self.change_name_value("address", Contacts.address)
-           self.change_name_value("home", Contacts.home)
-           self.change_name_value("mobile", Contacts.mobile)
-           self.change_name_value("work", Contacts.work)
-           self.change_name_value("fax", Contacts.fax)
-           self.change_name_value("email", Contacts.email1)
-           self.change_name_value("email2", Contacts.email2)
-           self.change_name_value("email3", Contacts.email3)
-           self.change_name_value("homepage", Contacts.HP)
-           self.change_name_value("address2", Contacts.address2)
-           self.change_name_value("phone2", Contacts.phone2)
-           self.change_name_value("notes", Contacts.notes)
+           self.change_name_value("firstname", contacts.name)
+           self.change_name_value("middlename", contacts.middleN)
+           self.change_name_value("lastname", contacts.lastN)
+           self.change_name_value("nickN", contacts.nickN)
+           self.change_name_value("title", contacts.title)
+           self.change_name_value("company", contacts.company)
+           self.change_name_value("address", contacts.address)
+           self.change_name_value("home", contacts.home)
+           self.change_name_value("mobile", contacts.mobile)
+           self.change_name_value("work", contacts.work)
+           self.change_name_value("fax", contacts.fax)
+           self.change_name_value("email", contacts.email1)
+           self.change_name_value("email2", contacts.email2)
+           self.change_name_value("email3", contacts.email3)
+           self.change_name_value("homepage", contacts.HP)
+           self.change_name_value("address2", contacts.address2)
+           self.change_name_value("phone2", contacts.phone2)
+           self.change_name_value("notes", contacts.notes)
            self.contact_cache = None
