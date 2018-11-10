@@ -48,7 +48,7 @@ def orm(request):
     db_config = load_config(request.config.getoption("--target"))['db']
     ormfixture = ORMFixture(host = db_config['host'], database = db_config['database'], user = db_config['user'], password = db_config['password'])
     def fin():
-        ormfixture.stop()
+        pass
     request.addfinalizer(fin)
     return ormfixture
 
