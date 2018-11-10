@@ -124,7 +124,7 @@ class GroupHelper:
         return list(self.group_cache)
 
 
-    def view_group(self, group_id):
+    def view_group_id(self, group_id):
         wd = self.app.wd
         wd.find_element_by_link_text("home").click()
         wd.find_element_by_css_selector('select[name="group"] option[value="%s"]' % group_id).click()

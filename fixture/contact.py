@@ -149,6 +149,27 @@ class ContactHelper:
        return list(self.contact_cache)
 
 
+   def get_cont_list1(self):
+       if self.contact_cache is None:
+            wd = self.app.wd
+            #self.app.open_HP()
+            self.contact_cache = list()
+            for element in wd.find_elements_by_name("entry"):
+                list2 = element.find_elements_by_tag_name("td")
+                id = element.find_element_by_name("selected[]").get_attribute("value")
+                self.contact_cache.append(Contacts(lastN = list2[1].text,
+                                                   name=list2[2].text,
+                                                   address = list2[3].text,
+                                                   id=id,
+                                                   all_phones_from_HP = list2[5].text,
+                                                   all_mails_from_HP = list2[4].text))
+                                                   # home=all_phones[0]
+                                                   # mobile=all_phones[1],
+                                                   # work=all_phones[2],
+                                                   # phone2 = all_phones[3]))
+       return list(self.contact_cache)
+
+
    def open_cont_to_edit_by_index(self, index):
         wd = self.app.wd
         self.app.open_HP()
