@@ -71,3 +71,7 @@ class ORMFixture:
         orm_group = list(select(g for g in ORMFixture.ORMGroup if g.id == group.id))[0]
         return self.convert_contacts_to_model(
             select(c for c in ORMFixture.ORMContacts if c.deprecated is None and orm_group not in c.group))
+
+
+    def stop(self):
+        self.connection.close

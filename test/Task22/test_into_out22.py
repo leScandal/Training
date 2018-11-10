@@ -14,7 +14,7 @@ def test_cont_in_gr(app, db, orm):
     list_groups = db.get_group_list()
     any_cont = randrange(len(list_cont))
     any_gr = randrange(len(list_groups))
-    app.contact.into_group(any_cont, any_gr) #контакт в группу)
+    #app.contact.into_group(any_cont, any_gr) #контакт в группу)
     print(list_groups[any_gr])
     print(list_groups[any_gr].id)
     print(any_gr)
