@@ -252,3 +252,11 @@ class ContactHelper:
        self.contact_cache = None
 
 
+   def into_group(self, index_cont, index_gr):
+        wd = self.app.wd
+        self.select_contact_by_index(index_cont)
+        wd.find_element_by_name("to_group").click()
+        if not wd.find_element_by_xpath("//div[@class='right']/select//option[" + str(index_gr) + "]").is_selected():
+            wd.find_element_by_xpath("//div[@class='right']/select//option[" + str(index_gr) + "]").click()
+        wd.find_element_by_name("add").click()
+

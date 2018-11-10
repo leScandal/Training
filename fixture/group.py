@@ -111,6 +111,7 @@ class GroupHelper:
 
     group_cache = None
 
+
     def get_group_list(self):
         if self.group_cache is None:
             wd = self.app.wd
@@ -121,5 +122,14 @@ class GroupHelper:
                 id = element.find_element_by_name("selected[]").get_attribute("value")
                 self.group_cache.append(Group(name = text, id = id))
         return list(self.group_cache)
+
+
+    def view_group(self, group_id):
+        wd = self.app.wd
+        wd.find_element_by_link_text("home").click()
+        wd.find_element_by_css_selector('select[name="group"] option[value="%s"]' % group_id).click()
+        # if not wd.find_element_by_xpath("//form[@id='right']/select//option[" + str(index_gr) + "]").is_selected():
+        #     wd.find_element_by_xpath("//form[@id='right']/select//option[" + str(index_gr) + "]").click()
+
 
 

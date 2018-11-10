@@ -10,3 +10,7 @@ try:
     print(len(contacts))
 finally:
     db.stop()
+
+
+
+
