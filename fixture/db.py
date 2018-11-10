@@ -2,7 +2,7 @@ import pymysql
 import mysql.connector
 from model.group import Group
 from model.contacts import Contacts
-
+from fixture.orm import ORMFixture
 
 class DbFixture:
 
