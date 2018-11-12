@@ -25,4 +25,4 @@ def test_cont_out_gr(app, db, orm):
     app.group.view_group_id(list_groups[any_gr].id) # вход в случайно выбранную группу
     db_list_gr = orm.get_cont_in_gr(Group(id=list_groups[any_gr].id))
     ui_cont_gr2 = app.contact.get_cont_list1() #список контактов в гр чз ПИ
-    assert Contacts(id=ui_cont_gr2[0].id) in list(db_list_gr()), "Error"
+    assert Contacts(id=ui_cont_gr2[0].id) not in db_list_gr(), "Error"
