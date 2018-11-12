@@ -132,4 +132,9 @@ class GroupHelper:
         #     wd.find_element_by_xpath("//form[@id='right']/select//option[" + str(index_gr) + "]").click()
 
 
+    def full_group_list(self):
+        wd = self.app.wd
+        wd.find_element_by_link_text("home").click()
+        if not wd.find_element_by_xpath("//form[@id='right']/select//option[2]").is_selected():
+            wd.find_element_by_xpath("//form[@id='right']/select//option[2]").click()
 

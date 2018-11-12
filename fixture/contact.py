@@ -281,3 +281,14 @@ class ContactHelper:
             wd.find_element_by_xpath("//div[@class='right']/select//option[" + str(index_gr) + "]").click()
         wd.find_element_by_name("add").click()
 
+
+   def out_group(self, id_cont, id_gr):
+        wd = self.app.wd
+        wd.find_element_by_link_text("home").click()
+        wd.find_element_by_css_selector('select[name="group"] option[value="%s"]' % id_gr).click()
+        self.select_contact_by_id(id_cont)
+        wd.find_element_by_name("remove").click()
+        wd.find_element_by_link_text("home").click()
+        print("123-del first")
+
+
