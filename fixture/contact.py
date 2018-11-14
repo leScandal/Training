@@ -230,8 +230,8 @@ class ContactHelper:
    def edit_contact_by_id(self, id, new_data):
         wd = self.app.wd
         self.app.open_HP()
-        self.select_cont_by_id(id)
-        wd.find_element_by_tag_name("a").click()
+        #self.select_cont_by_id(id)
+        wd.find_element_by_xpath("//a[contains(@href,'%s')]/img[@title='Edit']" % id).click()
         self.fill_contact_form(new_data)
         wd.find_element_by_name("update").click()
         self.app.open_HP()
